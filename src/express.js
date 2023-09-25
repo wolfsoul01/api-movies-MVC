@@ -1,6 +1,6 @@
 // import movies from "./movies.json" assert { type: "json" };
 import express from "express";
-import {moviesRoutes} from './routes/movie.js'
+import {moviesRoutes} from '../routes/movie.js'
 
 const app = express();
 app.disable("x-powered-by");
