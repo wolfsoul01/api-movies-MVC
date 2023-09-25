@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node --watch express.js",
+    "dev": "node --watch src/express.js",
     "start": "node  src/express.js"
   },
   "keywords": [],

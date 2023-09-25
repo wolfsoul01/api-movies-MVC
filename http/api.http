@@ -5,7 +5,7 @@ GET http://localhost:3000/movies/?genere=Drama HTTP/1.1
 
 
 ###
-GET http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3 HTTP/1.1
+GET http://localhost:3000/movies/a08e8bcf-e522-4a31-bd20-e9fcf233c8a4 HTTP/1.1
 
 ###
 POST http://localhost:3000/movies
@@ -34,10 +34,10 @@ Content-Type: application/json
 {
   "id":"2",
    "year":2021,
-   "duration":200000000000000000000,
+   "duration":200000,
    "rate":10
 
 
 }
 ###
-DELETE http://localhost:3000/movies/7369d343-f6f4-4704-a8b3-eeef7f69da73 HTTP/1.1
+DELETE http://localhost:3000/movies/a08e8bcf-e522-4a31-bd20-e9fcf233c8a4 HTTP/1.1
