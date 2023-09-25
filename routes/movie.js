@@ -14,8 +14,10 @@ moviesRoutes.get("/", (req, res) => {
 
 moviesRoutes.get("/:id", (req, res) => {
   const { id } = req.params;
-
   const movie = MovieModel.getByID({id});
+
+  if(!movie) res.json({message:'Movie not Found '})
+
 
   res.json(movie);
 });

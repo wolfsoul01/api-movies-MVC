@@ -17,6 +17,9 @@ export class MovieModel {
 
   static getByID({id}) {
     const movie = movies.find((movie) => movie.id == id);
+
+    if(movie ===-1 )return false
+
     return movie;
   }
   static createMovie({ validate }) {
