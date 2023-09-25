@@ -3,55 +3,54 @@ import { patchMovie, validateMovie } from "../schema/movieZod.js";
 import { MovieModel } from "../models/movies.js";
 export const moviesRoutes = Router();
 
-moviesRoutes.get("/", (req, res) => {
+moviesRoutes.get("/", async (req, res) => {
   res.header({ "Access-Control-Allow-Origin": "*" });
-  const { genere } = req.query;
+  const { genre,limit } = req.query;
 
-  const movies = MovieModel.getAll({genere});
+  const movies = await MovieModel.getAll({options:{ genre,limit} });
 
   res.json(movies);
 });
 
-moviesRoutes.get("/:id", (req, res) => {
+moviesRoutes.get("/:id", async (req, res) => {
   const { id } = req.params;
-  const movie = MovieModel.getByID({id});
+  const movie = await MovieModel.getByID({ id });
 
-  if(!movie) res.json({message:'Movie not Found '})
-
+  if (!movie) res.json({ message: "Movie not Found " });
 
   res.json(movie);
 });
 
-moviesRoutes.post("/", (req, res) => {
+moviesRoutes.post("/", async (req, res) => {
   const validate = validateMovie(req.body);
 
   if (!validate.success) res.send(validate.error);
 
-  const newMovie = MovieModel.createMovie({ validate });
+  const newMovie = await MovieModel.createMovie({ validate });
 
   res.status(201).send(newMovie);
 });
 
-moviesRoutes.patch("/:id", (req, res) => {
+moviesRoutes.patch("/:id", async (req, res) => {
   const result = patchMovie(req.body);
   const { id } = req.params;
 
   if (!result.success) res.json({ error: result.error });
 
-  const updateMovie = MovieModel.updateMovie({ id, input: result.data });
+  const updateMovie = await MovieModel.updateMovie({ id, input: result.data });
 
   if (!updateMovie) res.json({ message: "Movie not Found" });
 
   res.json(updateMovie);
 });
 
-moviesRoutes.delete("/:id", (req, res) => {
+moviesRoutes.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
-  const succes = MovieModel.delete({ id });
+  const succes = await MovieModel.delete({ id });
 
   if (!succes) {
-    res.json({ message: "Movie not found " });;
+    res.json({ message: "Movie not found " });
   }
 
   res.json({ message: "Movie delte" });
