@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main></main>
+  </body>
+
+  <style>
+    img {
+      width: 300px;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 1fr 1fr ;
+      gap: 10px;
+    }
+    article {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid black;
+      border-radius: 25px;
+      background-color: beige;
+      padding: 20px;
+    }
+  </style>
+  <script type="module">
+    let infoapi;
+
+    fetch("http://localhost:3000/movies/?genere=drama")
+      .then((res) => res.json())
+      .then((data) => {
+        const $main = document.querySelector("main");
+
+        $main.innerHTML = data.map((item) => {
+          return `
+          <article>
+            <h1>${item.title}</h1>
+            <img src=${item.poster} alt=${`Peli-${item.title}`}>
+            <span>${item.year}</span>
+        </article>
+
+        `;
+        });
+      })
+      .catch((err) => console.log(err));
+
+
+      document.addEventListener('click',(e)=>{
+        console.log(e.target);
+      })
+  </script>
+</html>
