@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 const movies = redJson("../movies.json") || [];
 
 export class MovieModel {
-  static getAll(options) {
+  static getAll({options}) {
     if (options) {
       const moviesFilter = movies.filter((movie) =>
         movie.genre.map((g) => g.toLowerCase()).includes(options.toLowerCase())
@@ -15,7 +15,7 @@ export class MovieModel {
     return movies;
   }
 
-  static getByID(id) {
+  static getByID({id}) {
     const movie = movies.find((movie) => movie.id == id);
     return movie;
   }

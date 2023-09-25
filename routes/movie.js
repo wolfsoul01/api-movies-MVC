@@ -7,7 +7,7 @@ moviesRoutes.get("/", (req, res) => {
   res.header({ "Access-Control-Allow-Origin": "*" });
   const { genere } = req.query;
 
-  const movies = MovieModel.getAll(genere);
+  const movies = MovieModel.getAll({genere});
 
   res.json(movies);
 });
@@ -15,7 +15,7 @@ moviesRoutes.get("/", (req, res) => {
 moviesRoutes.get("/:id", (req, res) => {
   const { id } = req.params;
 
-  const movie = MovieModel.getByID(id);
+  const movie = MovieModel.getByID({id});
 
   res.json(movie);
 });
@@ -51,6 +51,6 @@ moviesRoutes.delete("/:id", (req, res) => {
   if (!succes) {
     res.json({ message: "Movie not found " });;
   }
-  
+
   res.json({ message: "Movie delte" });
 });
