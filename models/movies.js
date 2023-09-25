@@ -8,7 +8,7 @@ export class MovieModel {
     
     if (options) {
       const moviesFilter = movies.filter((movie) =>
-        movie.genre.map((g) => g.toLowerCase()).includes(options.genre.toLowerCase())
+        movie.genre.map((g) => g.toLowerCase()).includes(options.toLowerCase())
       );
 
       return moviesFilter;

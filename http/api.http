@@ -1,7 +1,7 @@
 GET http://localhost:3000/movies HTTP/1.1
 
 ###
-GET http://localhost:3000/movies/?genre=drama HTTP/1.1
+GET http://localhost:3000/movies/?genre=Action HTTP/1.1
 
 ###
 GET http://localhost:3000/movies/?limit=2 HTTP/1.1
@@ -43,4 +43,4 @@ Content-Type: application/json
 
 }
 ###
-DELETE http://localhost:3000/movies/5d1e9aeb-fb3c-45d2-ad32-e89704fc3f8b HTTP/1.1
+DELETE http://localhost:3000/movies/2c6aead1-a1a1-41a3-83a0-995f8f287609 HTTP/1.1
